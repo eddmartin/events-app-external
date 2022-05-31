@@ -4,7 +4,7 @@ const request = require('supertest');
 const app = require('../server');
 
 describe('GET /', function () {
-  it('responds with home page', function (done) {
+  it('responds with home page', function (done) {    
 
     //specify the url to be intercepted
     nock("http://localhost:8082")
@@ -27,13 +27,12 @@ describe('GET /', function () {
         if (err) {
           return done(err);
         }
-        chai.assert.isTrue(res.text.includes("<h1>Welcome to [TEAM NAME'S] application</h1>"));
+        chai.assert.isTrue(res.text.includes("<h1>Welcome to Arachid application</h1>"));
         return done();
       });
 
 
   });
-
 
   it('should display page when the backend is down', function (done) {
     //specify the url to be intercepted
@@ -55,12 +54,9 @@ describe('GET /', function () {
         return done();
       });
 
-
   });
 
 });
-
-
 
 describe('POST /event', function () {
   it('adds an event', function (done) {
